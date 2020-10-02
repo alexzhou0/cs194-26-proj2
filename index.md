@@ -1,37 +1,34 @@
-## Welcome to GitHub Pages
+## CS 194-26 Project 2: Fun with Filters and Frequencies!
 
-You can use the [editor on GitHub](https://github.com/alexzhou0/cs194-26-proj2/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Part 1: Fun with Filters
+#### Part 1.1: Finite Difference Operator
+![Cameraman Image](website_images/cameraman.png)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+To compute the gradients of the image, we convolve the image with the finite difference operator in the X and Y directions shown below to get the gradients in those respective directions (G_x, G_y). We can compute the magnitude by just taking the squareroot-sum-of-squares of these two results. 
 
-### Markdown
+![Finite Difference Operators](website_images/filters.jpg)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The result can be seen below:
 
-```markdown
-Syntax highlighted code block
+![Gradients after Filtering](website_images/cameraman_grad.png)
 
-# Header 1
-## Header 2
-### Header 3
+After binarizing the photo, we can see that we get more defined lines, although the result is really noisy. I chose a threshold of 80 for this.
 
-- Bulleted
-- List
+![Gradients after Thresholding](website_images/cameraman_thresh.png)
 
-1. Numbered
-2. List
+#### Part 1.2: Derivative of Gaussian (DoG) Filter
+If we first blur the image with a Gaussian filter, then perform the gradient computation, we can get much smoother edges. This can be seen below. We can also combine the Gaussian filter with the gradient filters by convolving the filters together, then convolving with the image to save computational cost. The result ends up being the same, as expected.
 
-**Bold** and _Italic_ and `Code` text
+![Gradients after Gaussian Filtering](website_images/cameraman_dog.png)
 
-[Link](url) and ![Image](src)
-```
+#### Part 1.3: Image Straightening
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+![Facade Straightening](website_images/facade.png)
 
-### Jekyll Themes
+![Eiffel Straightening](website_images/eiffel.png)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/alexzhou0/cs194-26-proj2/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+![Lecture Straightening](website_images/lecture.png)
 
-### Support or Contact
+![Pisa Straightening](website_images/pisa.png)
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+As we can see in the last photo, the "straightening" of the Tower of Pisa doesn't work, since the tower is supposed to be tilted, but is significant enough in the photo compared to the horizontal things on the ground that the output image is "straightened" such that the tower is no longer leaning as much. A middle ground is chosen, since my straightening algorithm allows some tolerance around -180, -90, 0, 90, and 180 degrees.
