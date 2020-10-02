@@ -23,13 +23,9 @@ If we first blur the image with a Gaussian filter, then perform the gradient com
 
 #### Part 1.3: Image Straightening
 
-![Facade Straightening](website_images/facade.png)
+![Facade Straightening](website_images/facade.png) ![Eiffel Straightening](website_images/eiffel.png)
 
-![Eiffel Straightening](website_images/eiffel.png)
-
-![Lecture Straightening](website_images/lecture.png)
-
-![Pisa Straightening](website_images/pisa.png)
+![Lecture Straightening](website_images/lecture.png) ![Pisa Straightening](website_images/pisa.png)
 
 As we can see in the last photo, the "straightening" of the Tower of Pisa doesn't work, since the tower is supposed to be tilted, but is significant enough in the photo compared to the horizontal things on the ground that the output image is "straightened" such that the tower is no longer leaning as much. A middle ground is chosen, since my straightening algorithm allows some tolerance around -180, -90, 0, 90, and 180 degrees.
 
@@ -50,13 +46,9 @@ Finally, we can try blurring an image and resharpening it. It doesn't seem to wo
 
 #### Part 2.2: Hybrid Images
 
-![Combined Derek](website_images/derek.png)
+![Combined Derek](website_images/derek.png) ![Combined Carole](website_images/carole.png)
 
-![Combined Carole](website_images/carole.png)
-
-![Combined Emoji](website_images/emoji.png)
-
-![Combined Shrek](website_images/shrek.png)
+![Combined Emoji](website_images/emoji.png) ![Combined Shrek](website_images/shrek.png)
 
 We can see that the blending doesn't work that well on the last example, where we try to make a hybrid image of Shrek and Mike Wazowski. This is probably because their features aren't that similar, so the high frequency features don't really fade away when looking from far away. 
 
